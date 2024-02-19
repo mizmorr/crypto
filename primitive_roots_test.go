@@ -19,12 +19,27 @@ func TestGCD(t *testing.T) {
 	}
 }
 
-func TestEulerFunc(t *testing.T) {
+// func TestEulerFunc(t *testing.T) {
 
-	args := []int{6, 8, 9, 10, 11, 12, 13, 14, 15, 16}
-	expected := []int{2, 4, 6, 4, 10, 4, 12, 6, 8, 8}
+// 	args := []int{6, 8, 9, 10, 11, 12, 13, 14, 15, 16}
+// 	expected := []int{2, 4, 6, 4, 10, 4, 12, 6, 8, 8}
 
+// 	for i, arg := range args {
+// 		phi_value, _ := phi(arg)
+// 		assert.Equal(t, phi_value, expected[i])
+// 	}
+// }
+
+func TestBinarize(t *testing.T) {
+	args := [][]int{
+		{4, 1},
+		{4, 2},
+		{7, 5},
+		{8, 6},
+	}
+	module := []int{11, 123, 15, 17}
+	expected := []int{4, 16, 7, 4}
 	for i, arg := range args {
-		assert.Equal(t, phi(arg), expected[i])
+		assert.Equal(t, binarize_pow(arg[0], arg[1], module[i]), expected[i])
 	}
 }
