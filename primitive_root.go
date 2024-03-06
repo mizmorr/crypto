@@ -12,7 +12,7 @@ var (
 	mutex = sync.RWMutex{}
 )
 
-func gcd(a, b int) int {
+func gcd(a, b int64) int64 {
 
 	if a == b {
 		return a
@@ -26,28 +26,32 @@ func gcd(a, b int) int {
 
 }
 
-func factorized(n int) []int {
-	factorized := []int{}
-	for i := 2; i <= n; i++ {
+func factorized(n int64) []int64 {
+	factorized := []int64{}
+	for i := int64(2); i*i <= n; i++ {
 
 		if n%i == 0 {
+			factorized = append(factorized, i)
+
 			for n%i == 0 {
 				n /= i
 			}
-			factorized = append(factorized, i)
 		}
+	}
+	if n > 1 {
+		factorized = append(factorized, n)
 	}
 
 	return factorized
 }
 
-func binarize_pow(a, b, p int) int {
-	return int(math.Pow(float64(a), float64(b))) % p
+func binarize_pow(a, b, p int64) int64 {
+	return int64(math.Pow(float64(a), float64(b))) % p
 }
 
-func prime_roots2(p int) {
+func prime_roots2(p int64) {
 	file, err := os.Create("result.txt")
-	roots := []int{}
+	roots := []int64{}
 	if err != nil {
 		log.Fatal(err.Error())
 	}
@@ -62,7 +66,7 @@ func prime_roots2(p int) {
 	wg.Add(2)
 	go func(wg *sync.WaitGroup) {
 		defer wg.Done()
-		for g := 1; g <= p/2; g++ {
+		for g := int64(1); g <= p/2; g++ {
 			mutex.Lock()
 			file.WriteString(fmt.Sprintln("Текущее значение - ", g))
 			ok := true
@@ -126,10 +130,10 @@ func prime_roots2(p int) {
 	file.WriteString(fmt.Sprintln("Результат - ", roots))
 
 }
-func prime_roots(p int) []int {
+func prime_roots(p int64) []int64 {
 
 	file, err := os.Create("result.txt")
-	roots := []int{}
+	roots := []int64{}
 	if err != nil {
 		log.Fatal(err.Error())
 	}
@@ -139,7 +143,7 @@ func prime_roots(p int) []int {
 	phi, factorized := p-1, factorized(p-1)
 	file.WriteString(fmt.Sprintln("Значение функции Эйлера - ", phi))
 	file.WriteString(fmt.Sprintln("Разложение - ", factorized))
-	for g := 1; g <= p; g++ {
+	for g := int64(2); g < p; g++ {
 		file.WriteString(fmt.Sprintln("Текущее значение - ", g))
 		ok := true
 		file.WriteString("Проверка.. \n")
@@ -162,6 +166,9 @@ func prime_roots(p int) []int {
 	return roots
 }
 
-func main() {
-	prime_roots2(23)
+func pp(a, mod int) {
+
+	for i := 2; i < mod; i++ {
+		fmt.Println(a, "^", i, "mod", mod, "=", int(math.Pow(float64(a), float64(i)))%mod)
+	}
 }

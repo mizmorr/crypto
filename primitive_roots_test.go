@@ -8,8 +8,8 @@ import (
 
 func TestGCD(t *testing.T) {
 
-	args := [][]int{{15, 13}, {17, 12}, {27, 18}, {30, 10}, {40, 20}, {150, 25}}
-	expected := []int{1, 1, 9, 10, 20, 25}
+	args := [][]int64{{15, 13}, {17, 12}, {27, 18}, {30, 10}, {40, 20}, {150, 25}}
+	expected := []int64{1, 1, 9, 10, 20, 25}
 	for i, arg := range args {
 		actual := gcd(arg[0], arg[1])
 
@@ -21,8 +21,8 @@ func TestGCD(t *testing.T) {
 
 // func TestEulerFunc(t *testing.T) {
 
-// 	args := []int{6, 8, 9, 10, 11, 12, 13, 14, 15, 16}
-// 	expected := []int{2, 4, 6, 4, 10, 4, 12, 6, 8, 8}
+// 	args := []int64{6, 8, 9, 10, 11, 12, 13, 14, 15, 16}
+// 	expected := []int64{2, 4, 6, 4, 10, 4, 12, 6, 8, 8}
 
 // 	for i, arg := range args {
 // 		phi_value, _ := phi(arg)
@@ -31,15 +31,19 @@ func TestGCD(t *testing.T) {
 // }
 
 func TestBinarize(t *testing.T) {
-	args := [][]int{
+	args := [][]int64{
 		{4, 1},
 		{4, 2},
 		{7, 5},
 		{8, 6},
 	}
-	module := []int{11, 123, 15, 17}
-	expected := []int{4, 16, 7, 4}
+	module := []int64{11, 123, 15, 17}
+	expected := []int64{4, 16, 7, 4}
 	for i, arg := range args {
 		assert.Equal(t, binarize_pow(arg[0], arg[1], module[i]), expected[i])
 	}
+}
+
+func TestPrime(t *testing.T) {
+
 }
