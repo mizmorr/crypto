@@ -1,0 +1,71 @@
+</TD><TD>n=(none)</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=(all)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=3</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=7&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=7&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=15&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=15&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11001">LRS</A>]</TD></TR>
+</TD><TD>n=5,10,15</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=31&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=31&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=31&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=31&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=31&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=31&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=63&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1000011">LRS</A>]</TD></TR>
+</TD><TD>n=9,18,27,36,45,54,63</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1001001">LRS</A>]</TD></TR>
+</TD><TD>n=21,42,63</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1010111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=63&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1011011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=63&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1100001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=63&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1100111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=63&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1101101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=63&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1110011">LRS</A>]</TD></TR>
+</TD><TD>n=21,42,63</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=1110101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10000011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10001001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10001111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10010001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10011101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10100111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10101011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10111001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=10111111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11000001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11001011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11010011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11010101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11100101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11101111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11110001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11110111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=127&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=11111101">LRS</A>]</TD></TR>
+</TD><TD>n=51,102,153,204,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100011011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100011101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100101011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100101101">LRS</A>]</TD></TR>
+</TD><TD>n=17,34,51,68,85,102,119,136,<BR>153,170,187,204,221,238,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100111001">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=100111111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101001101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101011111">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101100011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101100101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101101001">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101110001">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101110111">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=101111011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110000111">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110001011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110001101">LRS</A>]</TD></TR>
+</TD><TD>n=51,102,153,204,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110011111">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110100011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110101001">LRS</A>]</TD></TR>
+</TD><TD>n=51,102,153,204,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110110001">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=110111101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111000011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111001111">LRS</A>]</TD></TR>
+</TD><TD>n=17,34,51,68,85,102,119,136,<BR>153,170,187,204,221,238,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111010111">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111011101">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111100111">LRS</A>]</TD></TR>
+</TD><TD>n=51,102,153,204,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111110011">LRS</A>]</TD></TR>
+</TD><TD><font color="#ff0000">n=255&nbsp; (primitive)</font></TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111110101">LRS</A>]</TD></TR>
+</TD><TD>n=85,170,255</TD><TD> [<A HREF="http://www.ee.unb.ca/cgi-bin/tervo/sequence.pl?binary=111111001">LRS</A>]</TD></TR>

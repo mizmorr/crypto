@@ -1,10 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"fmt"
 	"math"
+	"os"
 	"strconv"
+	"strings"
 )
 
 func divider(a, b []byte) []byte {
@@ -30,44 +33,6 @@ func divider(a, b []byte) []byte {
 	return a
 }
 
-func prime(a []byte) bool {
-	if a[len(a)-1] == 0 {
-		return false
-	}
-	sum := byte(0)
-	for _, k := range a {
-		sum += k
-	}
-	if sum%2 == 0 {
-		return false
-	}
-	if len(a) > 3 {
-		if bytes.Equal(divider(a, []byte{1, 1, 1}), []byte{}) {
-			return false
-		}
-	}
-	if len(a) > 5 {
-		if bytes.Equal(divider(a, []byte{1, 1, 0, 1}), []byte{}) {
-			return false
-		}
-		if bytes.Equal(divider(a, []byte{1, 0, 1, 1}), []byte{}) {
-			return false
-		}
-	}
-	if len(a) > 7 {
-		if bytes.Equal(divider(a, []byte{1, 1, 1, 1, 1}), []byte{}) {
-			return false
-		}
-		if bytes.Equal(divider(a, []byte{1, 1, 0, 0, 1}), []byte{}) {
-			return false
-		}
-		if bytes.Equal(divider(a, []byte{1, 1, 0, 0, 1}), []byte{}) {
-			return false
-		}
-	}
-
-	return true
-}
 func string_to_bytes(s string) (bytes []byte) {
 	num, err := strconv.Atoi(s)
 	if err != nil {
@@ -84,7 +49,10 @@ func string_to_bytes(s string) (bytes []byte) {
 func generate_field(n int) (res [][]byte) {
 	for i := int64(1); i < int64(math.Pow(2, float64(n))); i++ {
 		x_hex := strconv.FormatInt(i, 2)
-		res = append(res, string_to_bytes(x_hex))
+		if i < 3 || strings.TrimFunc(x_hex, func(a rune) bool { return a == '0' }) != "1" {
+			res = append(res, string_to_bytes(x_hex))
+		}
+
 	}
 	return
 }
@@ -138,12 +106,10 @@ func multiply(a, b []byte) (res []byte) {
 // }
 
 func find(array [][]byte, search []byte) bool {
-
-	go func() bool{
-		for i:=0;i<len(array)/2;i++ {
-			if bytes.Equal(search,array[i]){
-				return true
-			}
+	for _, elem := range array {
+		if bytes.Equal(elem, search) {
+			return true
+		}
 	}
 
 	return false
@@ -172,9 +138,40 @@ func get_primitives(field [][]byte, polynom []byte, degree int) {
 		}
 	}
 }
+func get_irr(degree int) (res [][]byte) {
+
+	readFile, err := os.Open("irreducible.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	fileScanner := bufio.NewScanner(readFile)
+
+	fileScanner.Split(bufio.ScanLines)
+
+	for fileScanner.Scan() && len(fileScanner.Text())-1 <= degree/2 {
+		res = append(res, string_to_bytes(fileScanner.Text()))
+	}
+	readFile.Close()
+	return
+}
+
+func prime(polyn []byte) bool {
+	irreducible_p := get_irr(len(polyn) - 1)
+	// fmt.Println(irreducible_p)
+	for _, tested := range irreducible_p {
+		if bytes.Equal(divider(polyn, tested), []byte{}) {
+			return false
+		}
+	}
+	return true
+}
+
 func main() {
-
-	var gf_8 = generate_field(3)
-
-	get_primitives(gf_8, []byte{1, 0, 1, 1}, 3)
+	field := generate_field(4)
+	// t := field[3]
+	// prime(t)
+	// fmt.Println(field)
+	for _, elem := range field {
+		fmt.Println(elem)
+	}
 }
