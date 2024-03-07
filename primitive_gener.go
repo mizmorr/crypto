@@ -4,10 +4,10 @@ import (
 	"bufio"
 	"bytes"
 	"fmt"
+	"log"
 	"math"
 	"os"
 	"strconv"
-	"strings"
 )
 
 func divider(a, b []byte) []byte {
@@ -33,15 +33,11 @@ func divider(a, b []byte) []byte {
 	return a
 }
 
-func string_to_bytes(s string) (bytes []byte) {
-	num, err := strconv.Atoi(s)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return []byte{}
-	}
-	for num > 0 {
-		bytes = append(bytes, byte(num%10))
-		num /= 10
+func string_to_bytes(s string) (b []byte) {
+
+	for k := 0; k < len(s); k++ {
+		num, _ := strconv.Atoi(string(s[k]))
+		b = append(b, byte(num))
 	}
 	return
 }
@@ -49,9 +45,8 @@ func string_to_bytes(s string) (bytes []byte) {
 func generate_field(n int) (res [][]byte) {
 	for i := int64(1); i < int64(math.Pow(2, float64(n))); i++ {
 		x_hex := strconv.FormatInt(i, 2)
-		if i < 3 || strings.TrimFunc(x_hex, func(a rune) bool { return a == '0' }) != "1" {
-			res = append(res, string_to_bytes(x_hex))
-		}
+		// if i > 3 && strings.TrimFunc(x_hex, func(a rune) bool { return a == '0' }) == "1" {
+		res = append(res, string_to_bytes(x_hex))
 
 	}
 	return
@@ -67,6 +62,9 @@ func unpack_power(a, res []byte, degree int, number int) []byte {
 }
 
 func power(a []byte, degree int) []byte {
+	if degree == 0 {
+		return []byte{1}
+	}
 	return unpack_power(a, a, degree, 1)
 }
 
@@ -105,39 +103,56 @@ func multiply(a, b []byte) (res []byte) {
 // 	return -1
 // }
 
-func find(array [][]byte, search []byte) bool {
-	for _, elem := range array {
+func find(array [][]byte, search []byte) (bool, int) {
+	for index, elem := range array {
 		if bytes.Equal(elem, search) {
-			return true
+			return true, index
 		}
 	}
 
-	return false
+	return false, -1
 
 }
-func get_primitives(field [][]byte, polynom []byte, degree int) {
+func mark_field(field [][]byte, polynom []byte) {
 
-	for i, subject := range field {
-		counter := 1
-		// fmt.Println(subject, prime(subject))
+	file, err := os.Create("primitive_result.txt")
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	defer file.Close()
+	file.WriteString(fmt.Sprint("Markup GF(", len(field)+1, ")", "\n"))
+
+	for _, subject := range field {
+		counter := 0
+		file.WriteString(fmt.Sprintln("subject: ", subject))
+		var result string
+
 		if prime(subject) {
-			for j := 1; j < degree; j++ {
-				subject = divider(power(subject, degree), polynom)
-				for k, subj_second := range field {
-					if i != k {
-						if bytes.Equal(subject, subj_second) {
-							counter++
-							break
-						}
-					}
+			current := subject
+			result = "prime, "
+			for j := 0; j < len(field); j++ {
+				current = divider(power(subject, j), polynom)
+				if ok, index := find(field, current); ok {
+					counter++
+					file.WriteString(fmt.Sprintln(subject, "^", j, "=", current, "- ", index, " number in field"))
+				}
+				//test
+				if j > 4 && counter < 3 {
+					break
 				}
 			}
+		} else {
+			result = "not prime so - "
 		}
-		if counter == degree {
-			fmt.Println(subject)
+		if counter == len(field) {
+			result = "primitive"
+		} else {
+			result += "non primitive"
 		}
+		file.WriteString(fmt.Sprint("Result: ", result, "\n", "-------------", "\n", "\n"))
 	}
 }
+
 func get_irr(degree int) (res [][]byte) {
 
 	readFile, err := os.Open("irreducible.txt")
@@ -156,8 +171,10 @@ func get_irr(degree int) (res [][]byte) {
 }
 
 func prime(polyn []byte) bool {
+	if bytes.Equal(polyn, []byte{1}) {
+		return false
+	}
 	irreducible_p := get_irr(len(polyn) - 1)
-	// fmt.Println(irreducible_p)
 	for _, tested := range irreducible_p {
 		if bytes.Equal(divider(polyn, tested), []byte{}) {
 			return false
@@ -169,9 +186,5 @@ func prime(polyn []byte) bool {
 func main() {
 	field := generate_field(4)
 	// t := field[3]
-	// prime(t)
-	// fmt.Println(field)
-	for _, elem := range field {
-		fmt.Println(elem)
-	}
+	mark_field(field, []byte{1, 1, 0, 1})
 }

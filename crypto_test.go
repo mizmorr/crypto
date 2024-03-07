@@ -46,4 +46,15 @@ func TestBinarize(t *testing.T) {
 
 func TestPrime(t *testing.T) {
 
+	args := [][]byte{
+		{1, 0, 1},
+		{1, 0, 1, 0},
+		{1, 0, 1, 1, 1, 1, 0},
+		{1, 1, 1},
+		{1, 0, 0, 1, 1},
+	}
+	expected := []bool{false, false, false, true, true}
+	for i, arg := range args {
+		assert.Equal(t, prime(arg), expected[i])
+	}
 }
