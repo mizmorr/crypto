@@ -7,6 +7,7 @@ import (
 	"log"
 	"math"
 	"os"
+	"slices"
 	"strconv"
 )
 
@@ -183,8 +184,40 @@ func prime(polyn []byte) bool {
 	return true
 }
 
+func primitivity_check(polyn, field_polyn []byte) bool {
+	file, err := os.Create("primitive_check.txt")
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+	defer file.Close()
+
+	size := len(polyn)
+	field := generate_field(size)
+	field_count := int(math.Pow(2, float64(size))) - 1
+	count := 0
+	found := []int{}
+	str_to_print := ""
+	for k := 0; k < field_count; k++ {
+		current := divider(power(polyn, k), field_polyn)
+		str_to_print = fmt.Sprint(polyn, " ^ ", k, " = ", current, ", ")
+		if ok, found_index := find(field, current); ok {
+			if !slices.Contains(found, found_index) {
+				count++
+				found = append(found, found_index)
+				str_to_print += fmt.Sprintln("index in field - ", found_index)
+			} else {
+				str_to_print += "has already been found\n"
+			}
+		}
+		file.WriteString(str_to_print)
+	}
+	return count == field_count
+}
+
 func main() {
-	field := generate_field(4)
+	// field := generate_field(4)
+	fmt.Println(primitivity_check([]byte{1, 0, 0, 1, 0, 1}, []byte{1, 0, 0, 0, 0, 1, 1}))
 	// t := field[3]
-	mark_field(field, []byte{1, 1, 0, 1})
+	// mark_field(field, []byte{1, 1, 0, 1})
+	// fmt.Println(field)
 }
