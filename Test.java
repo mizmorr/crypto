@@ -1,4 +1,3 @@
-import java.util.*;
 
 class GFG{
 
@@ -24,51 +23,6 @@ static long  modular_pow(long  base, int exponent,
     return result;
 }
 
-/* method to return prime divisor for n */
-static long  PollardRho(long  n)
-{
-    /* initialize random seed */
-    Random rand = new Random();
-
-    /* no prime divisor for 1 */
-    if (n == 1) return n;
-
-    /* even number means one of the divisors is 2 */
-    if (n % 2 == 0) return 2;
-
-    /* we will pick from the range [2, N) */
-    long  x = (long)(rand.nextLong() % (n - 2)) + 2;
-    long  y = x;
-
-    /* the constant in f(x).
-     * Algorithm can be re-run with a different c
-     * if it throws failure for a composite. */
-    long  c = (long)(rand.nextLong()) % (n - 1) + 1;
-
-    /* Initialize candidate divisor (or result) */
-    long  d = 1L;
-
-    /* until the prime factor isn't obtained.
-       If n is prime, return n */
-    while (d == 1)
-    {
-        /* Tortoise Move: x(i+1) = f(x(i)) */
-        x = (modular_pow(x, 2, n) + c + n) % n;
-
-        /* Hare Move: y(i+1) = f(f(y(i))) */
-        y = (modular_pow(y, 2, n) + c + n) % n;
-        y = (modular_pow(y, 2, n) + c + n) % n;
-
-        /* check gcd of |x-y| and n */
-        d = __gcd(Math.abs(x - y), n);
-
-        /* retry if the algorithm fails to find prime factor
-         * with chosen x and c */
-        if (d == n) return PollardRho(n);
-    }
-
-    return d;
-}
 
 // Recursive function to return gcd of a and b
 static long __gcd(long a, long b)
@@ -78,11 +32,6 @@ static long __gcd(long a, long b)
 
 /* driver function */
 public static void main(String[] args)
-{
-    long n = 1207;
-    long x = 1L;
-    System.out.printf("One of the divisors for " + n + " is " +
-          PollardRho(n)+"\n");
-    System.out.println(x);
-}
+    {
+    }
 }

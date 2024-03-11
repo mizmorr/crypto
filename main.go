@@ -19,5 +19,11 @@ func main() {
 	// Ferma_factorize(1219)
 	// Polard_rho(1219)
 	// fmt.Println(Ferma_check(23))
-	fmt.Println(PollardRho(1207))
+	// testing := 85
+	Rho_factorize(135)
+	// for testing != 1 {
+	// current := pollard_rho(testing)
+	// testing /= current
+	// fmt.Println(current, testing)
+	// }
 }

@@ -47,7 +47,7 @@ func Polard_rho(n int) {
 	}
 }
 
-func PollardRho(n int) int {
+func pollard_rho(n int) int {
 
 	/* no prime divisor for 1 */
 	if n == 1 {
@@ -66,7 +66,7 @@ func PollardRho(n int) int {
 
 	/* Initialize candidate divisor (or result) */
 	d := 1
-
+	// fmt.Println("Сгенерированные параметры:", x_1, c)
 	/* until the prime factor isn't obtained.
 	   If n is prime, return n */
 	for d == 1 {
@@ -83,9 +83,30 @@ func PollardRho(n int) int {
 		/* retry if the algorithm fails to find prime factor
 		 * with chosen x and c */
 		if d == n {
-			return PollardRho(n)
+			// fmt.Println("one more try")
+			return pollard_rho(n)
 		}
 	}
 
 	return d
+}
+
+func Rho_factorize(n int) {
+
+	// result := []int{}
+	if Is_prime(n) {
+		fmt.Println(n)
+		return
+	} else {
+		current := pollard_rho(n)
+		n /= current
+		if Is_prime(current) {
+			fmt.Println(current)
+			Rho_factorize(n)
+		} else {
+			Rho_factorize(current)
+			fmt.Println(n)
+		}
+	}
+
 }
