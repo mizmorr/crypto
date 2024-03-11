@@ -12,20 +12,6 @@ var (
 	mutex = sync.RWMutex{}
 )
 
-func gcd(a, b int64) int64 {
-
-	if a == b {
-		return a
-	} else {
-		if a > b {
-			return gcd(a-b, b)
-		} else {
-			return gcd(a, b-a)
-		}
-	}
-
-}
-
 func factorized(n int64) []int64 {
 	factorized := []int64{}
 	for i := int64(2); i*i <= n; i++ {

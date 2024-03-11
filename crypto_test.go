@@ -8,10 +8,10 @@ import (
 
 func TestGCD(t *testing.T) {
 
-	args := [][]int64{{15, 13}, {17, 12}, {27, 18}, {30, 10}, {40, 20}, {150, 25}}
-	expected := []int64{1, 1, 9, 10, 20, 25}
+	args := [][]int{{15, 13}, {17, 12}, {27, 18}, {30, 10}, {40, 20}, {150, 25}}
+	expected := []int{1, 1, 9, 10, 20, 25}
 	for i, arg := range args {
-		actual := gcd(arg[0], arg[1])
+		actual := Gcd(arg[0], arg[1])
 
 		if expected[i] != actual {
 			t.Errorf("Result is incorrect, got: %v, expected: %v", actual, expected)

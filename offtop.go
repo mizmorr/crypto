@@ -46,3 +46,23 @@ func Fast_mod(base, n_degree, m int) int {
 	}
 	return c
 }
+
+func GCD2(a, b int) int {
+	if b == 0 {
+		return a
+	}
+	return GCD2(b, a%b)
+}
+func Gcd(a, b int) int {
+
+	if a == b {
+		return a
+	} else {
+		if a > b {
+			return Gcd(a-b, b)
+		} else {
+			return Gcd(a, b-a)
+		}
+	}
+
+}
