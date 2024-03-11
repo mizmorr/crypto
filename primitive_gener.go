@@ -213,11 +213,3 @@ func primitivity_check(polyn, field_polyn []byte) bool {
 	}
 	return count == field_count
 }
-
-func main() {
-	// field := generate_field(4)
-	fmt.Println(primitivity_check([]byte{1, 0, 0, 1, 0, 1}, []byte{1, 0, 0, 0, 0, 1, 1}))
-	// t := field[3]
-	// mark_field(field, []byte{1, 1, 0, 1})
-	// fmt.Println(field)
-}

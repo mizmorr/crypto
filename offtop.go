@@ -37,3 +37,12 @@ func get_irreducible() {
 	}
 	readFile.Close()
 }
+
+func Fast_mod(base, n_degree, m int) int {
+
+	c := 1
+	for i := 0; i < n_degree; i++ {
+		c = (c * base) % m
+	}
+	return c
+}
