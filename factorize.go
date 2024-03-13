@@ -29,6 +29,37 @@ func Polard_p_1(n, B int) int {
 		return -1
 	}
 }
+
+func pollard_p_2(n int) int {
+	i := 2
+	a := 2
+	d := GCD2(a, n)
+
+	for d == 1 {
+		a = Fast_mod(a, i, n)
+		d = GCD2(a-1, n)
+		i++
+	}
+
+	return d
+}
+func P_1_factorize(n int) {
+
+	if Is_prime(n) {
+		fmt.Println(n, "is prime")
+		return
+	}
+	divider := pollard_p_2(n)
+	fmt.Print(divider, " ")
+	n /= divider
+	for n != 1 || Is_prime(n) {
+		divider = pollard_p_2(n)
+		n /= divider
+		fmt.Print(divider, " ")
+
+	}
+	fmt.Println()
+}
 func g(x int) int { return int(math.Pow(float64(x), 2) + 1) }
 
 func Polard_rho(n int) {
@@ -49,12 +80,10 @@ func Polard_rho(n int) {
 
 func pollard_rho(n int) int {
 
-	/* no prime divisor for 1 */
 	if n == 1 {
 		return n
 	}
 
-	/* even number means one of the divisors is 2 */
 	if n%2 == 0 {
 		return 2
 	}
@@ -64,7 +93,6 @@ func pollard_rho(n int) int {
 
 	var c int = rand.Int()%(n-1) + 1
 
-	/* Initialize candidate divisor (or result) */
 	d := 1
 	// fmt.Println("Сгенерированные параметры:", x_1, c)
 	/* until the prime factor isn't obtained.

@@ -43,7 +43,7 @@ func string_to_bytes(s string) (b []byte) {
 	return
 }
 
-func generate_field(n int) (res [][]byte) {
+func Generate_field(n int) (res [][]byte) {
 	for i := int64(1); i < int64(math.Pow(2, float64(n))); i++ {
 		x_hex := strconv.FormatInt(i, 2)
 		// if i > 3 && strings.TrimFunc(x_hex, func(a rune) bool { return a == '0' }) == "1" {
@@ -114,7 +114,7 @@ func find(array [][]byte, search []byte) (bool, int) {
 	return false, -1
 
 }
-func mark_field(field [][]byte, polynom []byte) {
+func Mark_field(field [][]byte, polynom []byte) {
 
 	file, err := os.Create("primitive_result.txt")
 	if err != nil {
@@ -192,7 +192,7 @@ func primitivity_check(polyn, field_polyn []byte) bool {
 	defer file.Close()
 
 	size := len(polyn)
-	field := generate_field(size)
+	field := Generate_field(size)
 	field_count := int(math.Pow(2, float64(size))) - 1
 	count := 0
 	found := []int{}

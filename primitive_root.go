@@ -35,7 +35,7 @@ func binarize_pow(a, b, p int64) int64 {
 	return int64(math.Pow(float64(a), float64(b))) % p
 }
 
-func prime_roots2(p int64) {
+func Prime_roots2(p int64) {
 	file, err := os.Create("result.txt")
 	roots := []int64{}
 	if err != nil {

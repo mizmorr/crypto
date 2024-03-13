@@ -30,7 +30,7 @@ func get_primes() (res []int) {
 	readFile.Close()
 	return
 }
-func Ferma_check(n int) bool {
+func Fermat_check(n int) bool {
 
 	primes := get_primes()
 	for _, prime := range primes {
@@ -39,4 +39,13 @@ func Ferma_check(n int) bool {
 		}
 	}
 	return true
+}
+
+// need to use fermat check
+
+func Task14() {
+	args := []int{100, 110, 130, 150, 200, 250, 271, 341, 561}
+	for _, n := range args {
+		fmt.Println(n, "prime:", Fermat_check(n))
+	}
 }
