@@ -1,89 +1,114 @@
 package main
 
 import (
-	"crypto/ecdsa"
-	"crypto/elliptic"
-	"crypto/rand"
-	"crypto/sha256"
 	"fmt"
-	"os"
+
+	"gopkg.in/dedis/kyber.v2"
+	"gopkg.in/dedis/kyber.v2/group/edwards25519"
 )
 
-func generateKeyPair() (*ecdsa.PrivateKey, *ecdsa.PublicKey, error) {
-	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
-	if err != nil {
-		return nil, nil, err
-	}
-	return privateKey, &privateKey.PublicKey, nil
+var curve = edwards25519.NewBlakeSHA256Ed25519()
+var sha256 = curve.Hash()
+
+type Signature struct {
+	r kyber.Point
+	s kyber.Scalar
 }
 
-func signMessage(privateKey *ecdsa.PrivateKey, message []byte) ([]byte, error) {
-	hash := sha256.Sum256(message)
-	signature, err := ecdsa.SignASN1(rand.Reader, privateKey, hash[:])
-	if err != nil {
-		return nil, err
-	}
-	return signature, nil
+func Hash(s string) kyber.Scalar {
+	sha256.Reset()
+	sha256.Write([]byte(s))
+
+	return curve.Scalar().SetBytes(sha256.Sum(nil))
 }
 
-func verifySignature(publicKey *ecdsa.PublicKey, message, signature []byte) bool {
-	hash := sha256.Sum256(message)
-	return ecdsa.VerifyASN1(publicKey, hash[:], signature)
+// m: Message
+// x: Private key
+func Sign(m string, x kyber.Scalar) Signature {
+	// Get the base of the curve.
+	g := curve.Point().Base()
+
+	// Pick a random k from allowed set.
+	k := curve.Scalar().Pick(curve.RandomStream())
+
+	// r = k * G (a.k.a the same operation as r = g^k)
+	r := curve.Point().Mul(k, g)
+
+	// Hash(m || r)
+	e := Hash(m + r.String())
+
+	// s = k - e * x
+	s := curve.Scalar().Sub(k, curve.Scalar().Mul(e, x))
+
+	return Signature{r: r, s: s}
 }
 
-func readFile(filePath string) ([]byte, error) {
-	data, err := os.ReadFile(filePath)
-	if err != nil {
-		return nil, err
-	}
-	return data, nil
+// m: Message
+// S: Signature
+func PublicKey(m string, S Signature) kyber.Point {
+	// Create a generator.
+	g := curve.Point().Base()
+
+	// e = Hash(m || r)
+	e := Hash(m + S.r.String())
+
+	// y = (r - s * G) * (1 / e)
+	y := curve.Point().Sub(S.r, curve.Point().Mul(S.s, g))
+	y = curve.Point().Mul(curve.Scalar().Div(curve.Scalar().One(), e), y)
+
+	return y
 }
 
-func writeFile(filePath string, data []byte) error {
-	err := os.WriteFile(filePath, data, 0644)
-	if err != nil {
-		return err
-	}
-	return nil
+// m: Message
+// s: Signature
+// y: Public key
+func Verify(m string, S Signature, y kyber.Point) bool {
+	// Create a generator.
+	g := curve.Point().Base()
+
+	// e = Hash(m || r)
+	e := Hash(m + S.r.String())
+
+	// Attempt to reconstruct 's * G' with a provided signature; s * G = r - e * y
+	sGv := curve.Point().Sub(S.r, curve.Point().Mul(e, y))
+
+	// Construct the actual 's * G'
+	sG := curve.Point().Mul(S.s, g)
+
+	// Equality check; ensure signature and public key outputs to s * G.
+	return sG.Equal(sGv)
+}
+
+func (S Signature) String() string {
+	return fmt.Sprintf("(r=%s, s=%s)", S.r, S.s)
+}
+
+func KeyPair() (privateKey kyber.Scalar, publicKey kyber.Point) {
+	privateKey = curve.Scalar().Pick(curve.RandomStream())
+	publicKey = curve.Point().Mul(privateKey, curve.Point().Base())
+
+	return
 }
 
 func main() {
-	privateKey, publicKey, err := generateKeyPair()
-	if err != nil {
-		fmt.Println("Failed to generate key pair:", err)
-		os.Exit(1)
-	}
+	//privateKey := curve.Scalar().Pick(curve.RandomStream())
+	//publicKey := curve.Point().Mul(privateKey, curve.Point().Base())
+	privateKey, publicKey := KeyPair()
 
-	filePath := "file.txt"
-	message, err := readFile(filePath)
-	if err != nil {
-		fmt.Println("Failed to read file:", err)
-		os.Exit(1)
-	}
+	fmt.Printf("Generated private key: %s\n", privateKey)
+	fmt.Printf("Derived public key: %s\n\n", publicKey)
 
-	signature, err := signMessage(privateKey, message)
-	if err != nil {
-		fmt.Println("Failed to sign message:", err)
-		os.Exit(1)
-	}
+	message := "We're gonna be signing this!"
 
-	signatureFilePath := "signature.sig"
-	err = writeFile(signatureFilePath, signature)
-	if err != nil {
-		fmt.Println("Failed to write signature file:", err)
-		os.Exit(1)
-	}
+	signature := Sign(message, privateKey)
+	fmt.Printf("Signature %s\n\n", signature)
 
-	signatureToVerify, err := readFile(signatureFilePath)
-	if err != nil {
-		fmt.Println("Failed to read signature file:", err)
-		os.Exit(1)
-	}
+	derivedPublicKey := PublicKey(message, signature)
+	fmt.Printf("Derived public key: %s\n", derivedPublicKey)
+	fmt.Printf("Are the original and derived public keys the same? %t\n", publicKey.Equal(derivedPublicKey))
+	fmt.Printf("Is the signature legit w.r.t the original public key? %t\n\n", Verify(message, signature, publicKey))
 
-	isValidSignature := verifySignature(publicKey, message, signatureToVerify)
-	if isValidSignature {
-		fmt.Println("Подпись верна.")
-	} else {
-		fmt.Println("Подпись неверна.")
-	}
+	fakePublicKey := curve.Point().Mul(curve.Scalar().Neg(curve.Scalar().One()), publicKey)
+	fmt.Printf("Fake public key: %s\n", fakePublicKey)
+	fmt.Printf("Is the signature legit w.r.t a fake public key? %t\n", Verify(message, signature, fakePublicKey))
 }
