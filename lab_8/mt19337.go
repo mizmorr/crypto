@@ -54,8 +54,10 @@ func twist() {
 	}
 }
 
-func MT19937(a uint32) {
+func MT19937(n int, a uint32) {
 	mtSeed(a)
+	for i := 0; i < n; i++ {
 
-	fmt.Println(extractNumber())
+		fmt.Println(extractNumber())
+	}
 }
